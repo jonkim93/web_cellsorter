@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<pipeline name="CountBeadAttachedCells">
+    <operation name="CellBeadProximityFilterOp">
+        <maxDistance>60</maxDistance>
+    </operation>
+</pipeline>
+
+

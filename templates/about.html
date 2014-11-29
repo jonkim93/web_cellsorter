@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %} About Page{% endblock %}
+<head>
+	<link rel="stylesheet" href="../static/styles.css">
+</head>
+
+<body>
+{% block content %}
+	<div>
+		<img src="http://engineering.berkeley.edu/sites/default/files/images/news/2014/02/2-12-hiv.jpg">
+	</div>
+	<div>
+		<a href="http://engineering.berkeley.edu/2014/02/game-changer-hivaids">Article in Berkeley Engineering about device</a>
+	</div>
+{% endblock %}
+</body>
+<script>
+    $('.carousel').carousel({
+        interval: false
+    })
+</script>

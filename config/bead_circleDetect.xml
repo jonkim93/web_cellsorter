@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<pipeline name="testAlgorithm">
+	<operation name="BlurOp">
+        <kernelSize>3</kernelSize>
+    </operation>
+
+    <operation name="ConvertColorOp">
+        <colorSpaceConstant name="cv2.COLOR_BGR2GRAY">6L</colorSpaceConstant>
+    </operation>
+
+    <operation name="AdaptiveThresholdOp">
+        <maxValue>255</maxValue>
+        <blockSize>11</blockSize>
+    </operation>
+
+    <operation name="BlurOp">
+        <kernelSize>5</kernelSize>
+    </operation>
+
+    <repeat>
+        <iterations>6</iterations>
+        <operation name="DilateOp">
+            <kernelSize>3</kernelSize>
+        </operation>
+        <operation name="ErodeOp">
+            <kernelSize>3</kernelSize>
+        </operation>
+    </repeat>
+
+    <operation name="CannyOp">
+        <minValue>5</minValue>
+        <maxValue>50</maxValue>
+    </operation>
+
+    <operation name="GetBlobsFromCirclesOp">
+        <constant name="cv2.cv.CV_HOUGH_GRADIENT">3</constant>
+        <dp>1</dp>
+        <minDistance>20</minDistance>
+        <param1>50</param1>
+        <param2>10</param2>
+        <minRadius>8</minRadius>
+        <maxRadius>13</maxRadius>
+        <blobType>"Bead"</blobType>
+    </operation>
+
+</pipeline>
+
+

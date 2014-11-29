@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<pipeline name="ThresholdDetectCells">
+
+    <!-- input to pipeline: {"img": img} -->
+
+    <operation name="BlurOp">
+        <kernelSize>3</kernelSize>
+    </operation>
+
+    <repeat>
+        <iterations>5</iterations>
+        <operation name="ErodeOp">
+            <kernelSize>3</kernelSize>
+        </operation>
+        <operation name="DilateOp">
+            <kernelSize>3</kernelSize>
+        </operation>
+    </repeat>
+
+    <operation name="ConvertColorOp">
+        <colorSpaceConstant name="cv2.COLOR_BGR2HSV">40L</colorSpaceConstant>
+    </operation>
+
+    <operation name="ThresholdOp">
+        <lowerHue>110</lowerHue>
+        <upperHue>150</upperHue>
+        <lowerSat>10</lowerSat>
+        <upperSat>255</upperSat>
+        <lowerVal>100</lowerVal>
+        <upperVal>255</upperVal>
+    </operation>
+
+    <repeat>
+        <iterations>5</iterations>
+        <operation name="ErodeOp">
+            <kernelSize>3</kernelSize>
+        </operation>
+        <operation name="DilateOp">
+            <kernelSize>3</kernelSize>
+        </operation>
+    </repeat>
+
+    <operation name="GetBlobsFromContoursOp">
+        <blobType>"Cell"</blobType>
+    </operation>
+
+    <operation name="FilterBlobsOp">
+        <lowerArea>3000</lowerArea>
+        <upperArea>100000</upperArea>
+        <lowerHue>0</lowerHue>
+        <upperHue>255</upperHue>
+    </operation>
+</pipeline>
+
+

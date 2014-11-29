@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block title %} Results Page{% endblock %}
+<head>
+	<link rel="stylesheet" href="../static/styles.css">
+</head>
+
+<body>
+{% block content %}
+	<link href="../bootstrap/modal-carousel/dist/css/bootstrap-modal-carousel.css" rel="stylesheet" />
+	<script src="../bootstrap/modal-carousel/src/js/carousel-fit.js"/></script/>
+
+  {% if results %}
+  	<div class="center">
+    	<h3 class="center">{{results}}</h3>
+  	
+    <!--<img src={{imgsource}} alt="processed image">-->
+
+	    <div id="carousel-example-generic" class="carousel slide carousel-fit" data-ride="carousel" style="width:600px; margin:0 auto" data-interval="false">
+				<!-- Indicators -->
+				<ol class="carousel-indicators">
+					<li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+					{% for image_name in image_names %}
+			      <li data-target="#carousel-example-generic" data-slide-to="{{ loop.index }}"></li>
+			    {% endfor %}
+				</ol>
+
+				<!-- Wrapper for slides -->
+				<div class="carousel-inner">
+					<div class="item active">
+						<img src="{{first_image_name}}" alt="0">
+					</div>
+					{% for image_name in image_names %}
+						<div class="item">
+							<img src="{{ image_name }}" alt="{{ loop.index }}">
+						</div>
+					{% endfor %}
+				</div>
+
+				<!-- Controls -->
+				<a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+				<span class="glyphicon glyphicon-chevron-left"></span>
+				</a>
+				<a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+				<span class="glyphicon glyphicon-chevron-right"></span>
+				</a>
+			</div> <!-- Carousel -->
+		</div>
+
+
+  {% else %}
+    <h3>No results</h3>
+  {% endif %}
+{% endblock %}
+</body>
+<script>
+    $('.carousel').carousel({
+        interval: false
+    })
+</script>

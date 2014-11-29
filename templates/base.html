@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% block head %}
+    <title>CellSorter{% block title %}{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="author" content="">
+    <meta charset="utf-8">
+
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='ico/favicon.ico') }}">
+    <link rel="stylesheet" href="../static/styles.css">
+    {% endblock %}
+  </head>
+  <body>
+    {% block navbar %}
+    <div class="navbar navbar-static-top navbar-inverse">
+      <div class="container">
+        <button class="navbar-toggle">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">Cell Sorter</a>
+        <div class="nav-collapse">
+          <ul class="nav navbar-nav">
+              {% if homepage %}
+                <li class="active"><a href="/">Home</a></li>
+                <li><a href="/process">Process</a></li>
+                <li><a href="/about">About</a></li>
+              {% elif processpage %}
+                <li><a href="/">Home</a></li>
+                <li class="active"><a href="/process">Process</a></li>
+                <li><a href="/about">About</a></li>
+              {% elif aboutpage %}
+                <li><a href="/">Home</a></li>
+                <li><a href="/process">Process</a></li>
+                <li class="active"><a href="/about">About</a></li>
+              {% endif %}
+            </ul>
+          {% block navbar_right %}
+          <ul class="nav navbar-nav pull-right">
+            {% if not session.logged_in %}
+              <li><a href="#">Login or Signup</a></li>
+            {% else %}
+              <li><a href="#">Logout</a></li>
+            {% endif %}
+          </ul>
+          {% endblock %}
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+    {% endblock %}
+    <div class="container page">
+        <div class="content">
+          {% block content %}
+
+          <h3>
+            This is the site for the Healy CellSorter app. Upload images and process them to count the number of CD4+ cells in each image.
+          </h3>
+
+          {% endblock %}
+        </div>
+        <hr>
+    </div>
+    {% block js_footer %}
+      <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+      <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    {% endblock %}
+  </body>
+  <!--<script>
+    $('.navbar li a').click(function(e) {
+      $('.navbar li.active').removeClass('active');
+      var $this = $(this);
+      //if (!$this.hasClass('active')) {
+      //$this.parent().addClass('active');
+        //}
+      e.preventDefault();
+      });
+  </script>-->
+</html>

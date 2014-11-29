@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+{% block title %} Process Page{% endblock %}
+<head>
+	<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="shortcut icon" href="{{ url_for('static', filename='ico/favicon.ico') }}">
+  <link rel="stylesheet" href="../static/styles.css">			
+</head>
+
+<body>
+{% block content %}
+	<link href="../bootstrap/modal-carousel/dist/css/bootstrap-modal-carousel.css" rel="stylesheet" />
+	<script src="../bootstrap/modal-carousel/src/js/carousel-fit.js"/></script/>
+
+		<div class="content">
+	  	<div class="center">
+		    <div id="carousel-preview" class="carousel slide carousel-fit" data-ride="carousel" style="width:100%; margin:0 auto" data-interval="false">
+					<!-- Indicators -->
+					<ol class="carousel-indicators">
+						<li data-target="#carousel-preview" data-slide-to="0" class="active"></li>
+					</ol>
+
+					<!-- Wrapper for slides -->
+					<div class="carousel-inner">
+						<div class="item active">
+							<img src="http://placehold.it/400x400" alt="0" style="float: left; width: 49%; margin-right: 2%;">
+							<img src="http://placehold.it/400x400" alt="0" style="float: left; width: 49%;">
+						</div>
+					</div>
+
+					<!-- Controls -->
+					<a class="left carousel-control" href="#carousel-preview" role="button" data-slide="prev">
+					<span class="glyphicon glyphicon-chevron-left"></span>
+					</a>
+					<a class="right carousel-control" href="#carousel-preview" role="button" data-slide="next">
+					<span class="glyphicon glyphicon-chevron-right"></span>
+					</a>
+				</div> <!-- Carousel -->
+
+				<div>
+					<div class="btn-group" data-toggle="buttons" id="preview" style="margin:20px; margin-left:auto; margin-right:auto;">
+					  <label class="btn btn-primary active" id="previewOffButton" onclick="previewOff()">
+					    <input type="radio" name="options" id="previewOffRadio" autocomplete="off"> Preview Off
+					  </label>
+					  <label class="btn btn-primary" id="previewOnButton" onclick="previewOn()">
+					    <input type="radio" name="options" id="previewOnRadio" autocomplete="off" checked="true"> Preview On
+					  </label>
+					</div>
+
+					<!-- Button trigger modal -->
+				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" style="margin:20px">
+				  Edit Parameters
+				</button>
+
+				<!-- Modal -->
+				<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				  <div class="modal-dialog">
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+				        <h4 class="modal-title" id="parameterEdit">Parameters</h4>
+				      </div>
+				      <div class="modal-body" >
+				        <div class="input-group" style="width:100%;">
+								  <span class="input-group-addon" style="width:50%; text-align:left;">Lower Bead Threshold Bound</span>
+								  <input type="text" class="form-control" placeholder="100" style="width:50%;">
+								</div>
+								<div class="input-group" style="width:100%;">
+								  <span class="input-group-addon" style="width:50%; text-align:left;">Upper Bead Threshold Bound</span>
+								  <input type="text" class="form-control" placeholder="100" style="width:50%; ">
+								</div>
+				      </div>
+				      <div class="modal-footer">
+				        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				        <button type="button" class="btn btn-primary">Save changes</button>
+				      </div>
+				    </div>
+				  </div>
+				</div>
+
+					<form action="" method="post" enctype="multipart/form-data" id="upload-form">
+			      <div class="form-inline" style="width:80%;">
+			        <div class="form-group">
+			          <input type="file" name="files[]" id="upload-files" multiple>
+			        </div>
+			        <button type="submit" class="btn btn-primary btn-lg" id="upload-submit">Run</button>
+			      </div>
+			    </form>
+			  </div>
+	    </div>
+	  </div>
+	<script>
+		$('.carousel').carousel({
+		    interval: false
+		})
+	</script>
+	<script>
+		function previewOn(){
+			var previewOn = document.getElementById("previewOnButton")
+			if (previewOn.className.indexOf("active") > -1){
+				alert("active")
+			} else {
+				alert("not active")
+			}
+		}
+	</script>
+	<script>
+		function previewOff(){
+			alert("something else")
+		}
+	</script>
+{% endblock %}
+</body>
+

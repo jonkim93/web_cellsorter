@@ -1,0 +1,4 @@
+
+2) Let us assume, towards a contradiction, that there is a pair of leaves $(i,j)$ that minimizes the Q-criterion that are not neighbors in $\Tau$. We then observe two things:
+\\\indent 1) $\delta(i,j) > \delta(i,$ neighbor$(i))$
+\\\indent 2) $\dfrac{1}{|L|-2} \cdot \Big( \sum_{k \in L} \delta(i,k) + \sum_{k \in L} \delta(j,k)\Big) < \dfrac{1}{|L|-2} \cdot \Big( \sum_{k \in L} \delta(i,k) + \sum_{k \in L} \delta($neighbor$(i),k)\Big)$
