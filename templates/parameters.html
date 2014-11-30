@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %} Parameters{% endblock %}
+<head>
+	<script src="../bootstrap/slider/js/jquery.js"></script>
+	<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="shortcut icon" href="{{ url_for('static', filename='ico/favicon.ico') }}">
+  <link rel="stylesheet" href="../static/styles.css">	
+  <link href="../static/css/slider.css" rel="stylesheet" />
+  <link href="../static/css/prettify.css" rel="stylesheet">	
+	<script src="../static/js/carousel-fit.js"/></script/>	
+  <script src="../static/js/modernizr.js"></script>
+  <script src="../static/js/bootstrap-slider.js"></script>	
+
+</head>
+
+<body>
+{% block content %}
+	<div class="content">
+		<div class="well">
+      Bead Hue Range: <b>0</b> <input type="text" class="span2" value="" data-slider-min="0" data-slider-max="255" data-slider-step="1" data-slider-value="[100,150]" id="sl2" > <b>255</b>
+    </div>
+    <script type="text/javascript" src="/js/bootstrap-slider.js">
+			alert("stuff")
+			var slider = new Slider('#sl2', {});
+			alert("more stuff")
+	  </script>
+	</div>
+{% endblock %}
+</body>
+

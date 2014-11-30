@@ -1,0 +1,5 @@
+Parameters
+
+max distance between bead and cell - number input
+lower, upper H bead - dual sliders between 0 and 255
+lower S bead - number input (between )
